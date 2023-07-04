@@ -1,0 +1,11 @@
+Model Information:
+* title:	Brick Wall Test
+* source:	https://sketchfab.com/3d-models/brick-wall-test-b8c4aa9e02d64689bf63453378f2f99e
+* author:	adamdart7 (https://sketchfab.com/adamdart7)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Brick Wall Test" (https://sketchfab.com/3d-models/brick-wall-test-b8c4aa9e02d64689bf63453378f2f99e) by adamdart7 (https://sketchfab.com/adamdart7) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <!-- <script src = "https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"></script> -->
+
+        <script src="./js/collide.js"></script>
+        <script src="./js/key.js"></script>
+    </head>
+
+    <body>
+        <a-scene id = "scene" inspector-plugin-recast physics="debug: false">
+            <a-assets>
+                <a-asset-item id = "collider" src="./assets/navmesh.gltf"></a-asset-item>
+
+                <a-asset-item id="player_model" src="./assets/player/scene.gltf"></a-asset-item>
+            </a-assets>
+
+            <a-entity movement-controls="speed: 1; constrainToNavMesh: true" position="-5 0 22" key-collide>
+                <a-entity id="camera" camera position="0 2 0" look-controls="pointerLockEnabled: false">
+                    <a-entity position="-6.5 4 -5" text="font: exo2bold; align: center; width: 10; color: blue; value: Keys Collected:" ></a-entity>
+                    <a-entity id="score" position="-4.75 4 -5" text="font: exo2bold; align: center; width: 10; color: blue; value: 0" ></a-entity>
+                </a-entity>
+
+                <a-entity id="player" gltf-model="#player_model" visible="false" position="0 2 0" rotation="0 90 0" scale="0.1 0.1 0.1" dynamic-body="mass: 0; shape: sphere; radius: 0.05"></a-entity>
+            </a-entity>
+
+            <a-plane id = "ground" position = "0 0 0" rotation = "-90 0 0" height = "200" width = "200" color = "grey" static-body visible = "true" keys-placement></a-plane>
+
+            <a-entity position="-1.6 10.7 5.5" text="font: exo2bold; align: center; width: 40; color: white; value: KeyFinder" ></a-entity>
+            <a-entity position="-1.6 5.7 5.5" text="font: exo2bold; align: center; width: 20; color: white; value: Your goal is to find four keys hidden in the maze to win." ></a-entity>
+
+            <a-entity id = "walls">
+                <a-box id="wall1-52" position="-6.36662 0.5 -15.20735" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 56; height: 25" rotation=""></a-box>
+                <a-box id="wall1-49" position="-34.43588 0.5 -1.67203" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 54; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-4" position="-2.25939 0.5 -5" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 45; height: 25"></a-box>
+                <a-box id="wall1-6" position="-24.54775 0.5 10.27063" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-5" position="0.18088 0.5 4.18638" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25"></a-box>
+                <a-box id="wall1-22" position="14.77678 0.5 19.08133" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-24" position="-15.14911 0.5 32.34504" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-21" position="-0.4823 0.5 46.94566" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25"></a-box>
+                <a-box id="wall1-29" position="-15.10315 0.5 60.58264" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-7" position="24.11386 0.5 19.76488" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-15" position="24.1748 0.5 39.77848" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 15; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-28" position="24.12666 0.5 52.39411" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-9" position="39.42012 0.5 36.60147" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25"></a-box>
+                <a-box id="wall1-12" position="39.58095 0.5 46.61658" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-19" position="16.02222 0.5 61.80538" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-27" position="1.55284 0.5 76.10372" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-32" position="-48.10355 0.5 90.17434" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 100; height: 25" rotation=""></a-box>
+                <a-box id="wall1-34" position="-98.37185 0.5 75.47444" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-35" position="-89.4583 0.5 60.69982" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-48" position="-91.75235 0.5 38.81115" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 45; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-47" position="-87.39182 0.5 18.2991" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 15; height: 25" rotation=""></a-box>
+                <a-box id="wall1-43" position="-80.19322 0.5 3.69491" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-70" position="-89.51523 0.5 -10.31756" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-71" position="-94.12731 0.5 -31.64605" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 50; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-69" position="-89.49648 0.5 -55.61767" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-54" position="-99.07215 0.5 -63.22822" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-74" position="-78.00311 0.5 -71.2557" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 42; height: 25" rotation=""></a-box>
+                <a-box id="wall1-77" position="-57.35985 0.5 -73.65978" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 45; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-84" position="-36.36292 0.5 -80.49381" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 42; height: 25" rotation=""></a-box>
+                <a-box id="wall1-83" position="-16.56515 0.5 -60.71424" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 45; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-82" position="2.04086 0.5 -38.87894" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 39; height: 25" rotation=""></a-box>
+                <a-box id="wall1-57" position="21.05859 0.5 -31.18496" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 32; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-64" position="33.25695 0.5 -46.96648" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-61" position="35.69891 0.5 -72.07101" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 50; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-68" position="66.46585 0.5 -91.66083" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 62; height: 25" rotation=""></a-box>
+                <a-box id="wall1-56" position="97.51196 0.5 -49.59762" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 87; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-67" position="77.61523 0.5 -6.42253" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 40; height: 25" rotation=""></a-box>
+                <a-box id="wall1-2" position="96.93069 0.5 17.90096" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-17" position="96.78789 0.5 47.32248" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 42; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-8" position="97.16683 0.5 76.02947" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-20" position="82.2308 0.5 85.89133" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-25" position="66.05101 0.5 85.95734" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-30" position="26.46654 0.5 85.55011" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 50; height: 25" rotation=""></a-box>
+                <a-box id="wall1-26" position="28.19641 0 75.61031" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-23" position="42.20669 0.5 61.22832" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-16" position="51.54401 0.5 72.44924" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-14" position="81.66903 0.47418 68.55138" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-18" position="79.19838 0.5 40.78909" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-13" position="65.99621 0.5 40.10641" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-10" position="88.34196 0.5 26.04221" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 18; height: 25"></a-box>
+                <a-box id="wall1-11" position="48.59855 0.5 25.63452" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 35; height: 25"></a-box>
+                <a-box id="wall1" position="73.06398 0.50235 8.81736" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 49; height: 25" scale=""></a-box>
+                <a-box id="wall1-3" position="31.58656 0.5 -3.64282" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 60; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-51" position="49.20296 0.5 -6.16777" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-67" position="77.61523 0.5 -6.42253" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 40; height: 25" rotation=""></a-box>
+                <a-box id="wall1-55" position="66.72299 0.5 -20.20815" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 35; height: 25" rotation=""></a-box>
+                <a-box id="wall1-65" position="83.5905 0.5 -34.78613" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-53" position="45.50097 0.5 -31.74831" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-59" position="60.15576 0.5 -46.53949" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-60" position="72.98382 0.5 -47.56612" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-63" position="85.36434 0.5 -62.45387" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 25; height: 25" rotation=""></a-box>
+                <a-box id="wall1-58" position="47.69961 0.5 -61.57623" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-62" position="62.90667 0.5 -75.71654" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-62" position="62.90667 0.5 -75.71654" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-39" position="-34.29536 0.5 24.64992" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-76" position="-27.96673 0.5 -28.23223" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 60; height: 25" rotation=""></a-box>
+                <a-box id="wall1-37" position="-42.75071 0.5 36.09315" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 38; height: 25" rotation=""></a-box>
+                <a-box id="wall1-38" position="-24.13906 0.5 50.59694" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-31" position="-29.57943 0.5 75.32195" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-33" position="-71.29802 0.5 75.33188" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 28; height: 25" rotation=""></a-box>
+                <a-box id="wall1-36" position="-70.00956 0.5 37.66689" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 75; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-44" position="-80.18939 0.5 45.80577" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-72" position="-80.11434 0.5 -40.76237" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-73" position="-69.79792 0.5 -41.65582" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 60; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-80" position="-47.59686 0.5 -51.55757" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-79" position="-37.82261 0.5 -67.98341" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 20; height: 25" rotation=""></a-box>
+                <a-box id="wall1-78" position="-28.35404 0.5 -53.03923" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-66" position="-42.91537 0.5 -38.65093" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-75" position="-57.60557 0.5 -23.73621" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-50" position="-44.93143 0.5 -0.41107" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-46" position="-58.05966 0.5 0.73636" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 25; height: 25" rotation=""></a-box>
+                <a-box id="wall1-45" position="-61.28227 0.5 18.66039" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 36; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-41" position="-53.31339 0.5 23.34808" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 25; height: 25" rotation="0 90 0"></a-box>
+                <a-box id="wall1-40" position="-38.62704 0.5 64.82884" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 30; height: 25" rotation=""></a-box>
+                <a-box id="wall1-42" position="-52.79913 0.5 50.65616" width="10" depth="1" color="white" src = "./assets\wall\textures\phong2_baseColor.png" material="" geometry="width: 35; height: 25" rotation=""></a-box>
+            </a-entity>
+
+            <a-entity id = "navigation-mesh" gltf-model="#collider" visible="false" nav-mesh></a-entity>
+        </a-scene>
+    </body>
+</html>

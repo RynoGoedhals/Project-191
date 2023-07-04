@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gnarly Stick - some call it a wand
+* source:	https://sketchfab.com/3d-models/gnarly-stick-some-call-it-a-wand-106153ecee9d45b195a565c7abfb7095
+* author:	JDi Design (https://sketchfab.com/jdidesign)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gnarly Stick - some call it a wand" (https://sketchfab.com/3d-models/gnarly-stick-some-call-it-a-wand-106153ecee9d45b195a565c7abfb7095) by JDi Design (https://sketchfab.com/jdidesign) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
